@@ -93,6 +93,10 @@
 	});*/
 	document.getElementById("all_screen").addEventListener('click',all_screen_click);
 	document.getElementById("hint_guide").addEventListener('click',hint_guide_click);
+	
+	document.querySelectorAll('.submenu-item').forEach(item => {
+	  item.addEventListener('click',item_click);
+	});
 	document.querySelectorAll('.pool').forEach(item => {
 	  item.addEventListener('click',pool_click);
 	});

@@ -372,6 +372,10 @@ function hint_guide_click(event){
 	guide_forward();
 }
 
+function item_click(event){
+	document.getElementById("side-menu-switch").checked = false;
+}
+
 function guide_forward(){
 	if(document.getElementsByClassName('guide_clickme').length != 0)
 		return;
