@@ -369,6 +369,8 @@ function all_screen_click(event){
 
 function hint_guide_click(event){
 	in_guide = !in_guide;
+	if(!in_guide && document.getElementsByClassName('guide_clickme').length != 0)
+		document.getElementsByClassName('guide_clickme')[0].classList.remove('guide_clickme');
 	guide_forward();
 }
 
