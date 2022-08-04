@@ -238,6 +238,9 @@ ul a {
   #side_menu{
 	width:70%;
   }
+  .menu {
+    font-size: 30px;
+  }
 
 }
 
