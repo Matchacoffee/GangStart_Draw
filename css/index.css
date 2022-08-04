@@ -227,7 +227,7 @@ ul a {
 /* ===================================
    RWD
    ===================================*/
-@media screen and (max-width:900px) {
+@media screen and (max-width:1000px) {
   #container{
 	width : 100%;
 	position: absolute; 
