@@ -112,8 +112,9 @@ canvas {
   100% { transform:  translate(0px, 0px) rotate(0deg); }
 }
 #container {
-  margin: 0 auto; width: 80%;
+  margin: 0 auto; 
   text-align : center;
+  width: 80%; 
 }
 #container table {
     margin: 0 auto;
@@ -229,6 +230,9 @@ ul a {
 @media screen and (max-width:900px) {
   #container{
 	width : 100%;
+	position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
   }
   #side_menu{
 	width:50%;
