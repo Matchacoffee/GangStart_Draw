@@ -86,7 +86,7 @@ canvas {
 #side-menu-switch:checked ~ #side_menu .side_btn{
 	transform: scaleX(-1);
 	right: 0px;
-} 
+}
 .prizes{
 	position:absolute;
 	top:0;
@@ -195,24 +195,6 @@ line-height:
   overflow: hidden;
   transition: height 0.5s ease;
 }
-/*.submenu {
-  position: relative;
-  opacity: 0;
-  width: 100%;
-  z-index: 8;
-  transition: opacity 0.5s ease;
-}
-.submenu-item {
-  display: block;
-  height: 0px;
-  overflow: hidden;
-  transition: height 0.5s ease;
-}*/
-/*.drop-down:hover .submenu-item {
-  overflow: visible;
-  //height: auto;
-  height: 30px;
-}*/
 /* ===================================
    視覺樣式
    ===================================*/

@@ -55,6 +55,11 @@ window.onload = function() {
 		Cert_Archer_gold
 		Cert_healer_
 		Cert_Summit 頂尖
+		
+		//監聽動畫https://blog.gtwang.org/web-development/using-css3-animation/
+		e.addEventListener("animationstart", listener, false);
+		e.addEventListener("animationend", listener, false);
+		e.addEventListener("animationiteration", listener, false);
 	*/
 	//array.push(value);
 
@@ -416,7 +421,7 @@ function guide_forward(){
 
 
 async function check_finished(){
-	if(document.getElementsByClassName('big_prizes').length != 3)//大獎
+	if(document.querySelectorAll("#container .big_prizes").length != 3)//大獎
 		return;
 	var cards = document.getElementsByClassName('card_imgs');
 	let total = cards.length;
