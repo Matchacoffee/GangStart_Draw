@@ -16,11 +16,22 @@
 		</div>
 	</div>
 	<input type="checkbox" name="" id="side-menu-switch">
+	<div class = "hidden">
+		<input type="checkbox" id="side1" class = "side_chk">
+		<input type="checkbox" id="side2" class = "side_chk">
+		<input type="checkbox" id="side3" class = "side_chk">
+		<input type="checkbox" id="side4" class = "side_chk">
+		<input type="checkbox" id="side5" class = "side_chk">
+	</div>
+	
 	
 	<div id = "side_menu">
 	   <ul class="menu">
 		<li class="itembox drop-down">
-		  <a class="item" href="#">限定池</a>
+		  <!-- <a class="item" href="#">限定池</a> -->
+		  <label for="side1" >
+		      <a class="item" >限定池</a>
+		  </label>
 		  <div class="submenu">
 			<a class="submenu-item pool binbin" href="#">我滿懷青春的有病池</a>
 			<a class="submenu-item pool cloudhorizon" href="#">雲際線畢業池</a>
@@ -29,7 +40,9 @@
 		  </div>
 		</li>
 		<li class="itembox drop-down">
-		  <a  class="item" href="#">常駐池</a>
+		  <label for="side2" >
+		      <a class="item" >常駐池</a>
+		  </label>
 		  <div class="submenu">
 		    <a class="submenu-item pool skyweapon" href="#">天之武器池</a>
 			<a class="submenu-item pool empire_sword" href="#">王城劍池</a>
@@ -38,14 +51,19 @@
 			<a class="submenu-item pool empire_healer" href="#">王城牧池</a>
 			<a class="submenu-item pool jungle_wizard" href="#">密林巫師</a>
 		  </div>
-		</li>    <li class="itembox drop-down">
-		  <a  class="item" href="#">貼心功能</a>
+		</li>    
+		<li class="itembox drop-down">
+		  <label for="side3" >
+		      <a class="item" >貼心功能</a>
+		  </label>
 		  <div class="submenu">
 			<a class="submenu-item" id ="hint_guide" href="#">提示我該抽哪裡</a>
 		  </div>
 		</li>
 		<li class="itembox drop-down">
-		  <a  class="item" href="#">其他</a>
+		  <label for="side4" >
+		      <a class="item" >其他</a>
+		  </label>
 		  <div class="submenu">
 			<a class="submenu-item" href="#"> </a>
 			<a class="submenu-item" href="#"> </a>
@@ -56,7 +74,9 @@
 		  </div>
 		</li>
 		<li class="itembox drop-down">
-		  <a  class="item" href="#">沒鑽點我</a>
+		  <label for="side5" >
+		      <a class="item" >沒鑽點我</a>
+		  </label>
 		  <div class="submenu">
 			<a class="submenu-item" href="#">非洲救星</a>
 			<a class="submenu-item" href="#">魔法小卡</a>
@@ -67,7 +87,7 @@
 		</li>
 	  </ul>
 	
-	<label for="side-menu-switch">
+	<label for="side-menu-switch" class="side_btn" >
 		〉
 	</label>
 	</div>
@@ -100,6 +120,10 @@
 	document.querySelectorAll('.pool').forEach(item => {
 	  item.addEventListener('click',pool_click);
 	});
+	document.querySelectorAll('.side_chk').forEach(item => {
+	  item.addEventListener('click',side_chk_click);
+	});
+	//
 	/*
 	function start(){
 	  //var screen-widths = document.body.clientWidth;

@@ -371,12 +371,40 @@ function hint_guide_click(event){
 	in_guide = !in_guide;
 	if(!in_guide && document.getElementsByClassName('guide_clickme').length != 0)
 		document.getElementsByClassName('guide_clickme')[0].classList.remove('guide_clickme');
-	guide_forward();
+	else guide_forward();	
 }
 
 function item_click(event){
 	document.getElementById("side-menu-switch").checked = false;
 }
+
+function side_chk_click(event){
+	var btn = event.srcElement;
+	var index = btn.id.replace("side","");
+	var this_checked = btn.checked;
+	var all = document.querySelectorAll("#side_menu .submenu-item");
+	all.forEach(item => {
+	  item.style.overflow = "hidden";
+	  item.style.height = "0px";
+	});
+	all = document.querySelectorAll(".hidden .side_chk");
+	all.forEach(item => {
+	  item.checked = false;
+	});
+	btn.checked = this_checked;
+	if(!btn.checked)
+		return;
+	var  btns = document.getElementsByClassName("side_chk");
+	var myfontsize = getComputedStyle(document.documentElement).getPropertyValue('--side_fontsize');	
+	var list = document.querySelectorAll("#side_menu li:nth-child("+index+") .submenu-item");
+	list.forEach(item => {
+	  item.style.overflow = "visible";
+	  item.style.height= myfontsize;
+	});
+	
+	//console.log(list[index]);
+}
+
 
 function guide_forward(){
 	if(document.getElementsByClassName('guide_clickme').length != 0)
@@ -388,7 +416,6 @@ function guide_forward(){
 
 
 async function check_finished(){
-
 	if(document.getElementsByClassName('big_prizes').length != 3)//大獎
 		return;
 	var cards = document.getElementsByClassName('card_imgs');
