@@ -172,13 +172,6 @@ ul a {
   position: relative;
 }
 .submenu {
-	overflow:hidden;
-    display: -webkit-box;
-	
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-	white-space: nowrap;
-	
   position: relative;
   opacity: 0;
   width: 100%;
