@@ -374,7 +374,9 @@ function pool_click(event){
 	var btn = event.srcElement;
 	var str_arr = btn.className.split(' ');
 	create_pool(str_arr[str_arr.length-1]);
-	
+	if(in_guide){
+	    guide_forward();
+	}
 }
 
 function all_screen_click(event){
@@ -385,7 +387,7 @@ function all_screen_click(event){
 	if(in_guide){
 	    if(document.getElementsByClassName('guide_clickme').length == 0)
 			lastClick.classList.add('guide_clickme');
-	}	
+	}
     event.srcElement.style.display = "none";
 	divPreviewer.innerHTML = '';//清空，再點再加
 }
