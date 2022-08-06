@@ -49,6 +49,7 @@ function RandomPrizes(){
 window.onload = function() {
     TweenMax.set(divPreviewer, {perspective:500});
 	//病病池: 25張 6格金幣V 3格頂尖證明 2格小覺醒石 2格中覺醒石 2格大覺醒石 2格漢堡  弓銅 法銅 劍銅 牧銅 證明各1  1格掃蕩卷 3隻腳色
+	//畢業池:25張 6格金幣 2格頂尖證明 2格小覺醒石 2格中覺醒石 2格大覺醒石 2格漢堡 弓銅 法銅 劍銅 牧銅 證明各1  2格掃蕩卷 3隻腳色
 	/*
 	    Cert_Wizard_copper
 		Cert_Sword_silver
@@ -313,7 +314,7 @@ function tableCreate() {
 
 function create_pool(pool_name){
 	switch(pool_name){
-	  case "binbin":
+	    case "binbin":
 	        prizes=[];			
 			FillPrizes(prizes,'images/material/gold.png',6);//金幣
 			FillPrizes(prizes,'images/material/Cert_Summit.png',3);//頂尖證明
@@ -330,8 +331,25 @@ function create_pool(pool_name){
 			FillPrizes(prizes,'images/character/maomao.png',1,true);//角色
 			FillPrizes(prizes,'images/character/tutu.png',1,true);//角色
 		break;
-	  default:
-	    alert('由於沒有圖片素材，目前只開放病病池(低畫質版)');
+		case "cloudhorizon":
+		    prizes=[];			
+			FillPrizes(prizes,'images/material/gold.png',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.png',2);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.png',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.png',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.png',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.png',2);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.png',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.png',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
+			FillPrizes(prizes,'images/material/skip.png',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/margaret.png',1,true);//角色
+			FillPrizes(prizes,'images/character/kamiina.png',1,true);//角色
+			FillPrizes(prizes,'images/character/linglan.png',1,true);//角色
+		break;
+	    default:
+	    alert('由於沒有圖片素材，目前只開放病病池/畢業池(低畫質版)');
 	    return;
 	}
 	tableCreate();//清空並重置table
