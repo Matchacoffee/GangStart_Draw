@@ -348,6 +348,23 @@ function create_pool(pool_name){
 			FillPrizes(prizes,'images/character/kamiina.png',1,true);//角色
 			FillPrizes(prizes,'images/character/linglan.png',1,true);//角色
 		break;
+		case "ciandaoshanghuei":
+		    prizes=[];
+			FillPrizes(prizes,'images/material/gold.png',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.png',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.png',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.png',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.png',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.png',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.png',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.png',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
+			FillPrizes(prizes,'images/material/skip.png',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/bulliedRabbit_SSR.png',1,true);//角色
+			FillPrizes(prizes,'images/character/qiuren_Archer.png',1,true);//角色
+			FillPrizes(prizes,'images/character/Marlow_SR.png',1,true);//角色
+		break;
 	    default:
 	    alert('由於沒有圖片素材，目前只開放病病池/畢業池(低畫質版)');
 	    return;

@@ -121,7 +121,7 @@ canvas {
 #container {
   margin: 0 auto; 
   text-align : center;
-  width: 80%; 
+  max-width: 1000px; 
 }
 #container table {
     margin: 0 auto;
