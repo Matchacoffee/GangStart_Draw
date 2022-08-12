@@ -12,6 +12,8 @@ var canvas = document.createElement('canvas');
 var context = canvas.getContext('2d');
 canvas.id = "block_canvas";
 
+var imgDiv = document.getElementById('all_screen');	
+var videoDiv = document.getElementById('drawed_animation');	
 var vertices = [],
     indices = [],
     fragments = [];
@@ -20,7 +22,7 @@ var divPreviewer = document.getElementById('divPreviewer');
 
 var clickPosition = [imageWidth * 0.5, imageHeight * 0.5];
 
-function FillPrizes(array,src,count,isBigPrizes = false){
+function FillPrizes(array,src,count,isBigPrizes = false,haveAnimation = false){
 	var tempImg;
 	for(var i=0;i<count;i++)
 	{
@@ -29,6 +31,8 @@ function FillPrizes(array,src,count,isBigPrizes = false){
 		if(isBigPrizes)
 		    tempImg.className = 'prizes big_prizes';
 	    else tempImg.className = 'prizes';
+		if(haveAnimation)
+			tempImg.classList.add('haveAnimation');
 		array.push(tempImg);
 	}
 }
@@ -74,7 +78,7 @@ function imagesLoaded() {
 }
 */
 function placeImage(transitionIn,id) {
-	image.className="fade-in-image";
+	image.className="showcardback fade-in-image";
 	targetPrize = prizes[id];
 	/*var index = Math.floor(Math.random()*prizes.length);//ex: random*5 > 0~4
     targetPrize = prizes[index];//給他搞成隨機
@@ -85,7 +89,12 @@ function placeImage(transitionIn,id) {
 	canvas.width = image.width;
 	canvas.height = image.height;
 
-    image.addEventListener('click', imageClickHandler);
+    image.addEventListener('click', endanimaition);
+
+    image.addEventListener('animationend', (ev) => {
+		image.addEventListener('click', imageClickHandler);
+       //console.log("animation end", ev);
+    });
 	
 	divPreviewer.appendChild(canvas);
 	divPreviewer.appendChild(targetPrize);
@@ -95,6 +104,10 @@ function placeImage(transitionIn,id) {
     if (transitionIn !== false) {
         TweenMax.fromTo(image, 0.75, {y:-1000}, {y:0, ease:Back.easeOut});
     }
+}
+function endanimaition(event){
+	event.srcElement.classList.remove('fade-in-image');
+	event.srcElement.addEventListener('click', imageClickHandler);
 }
 
 function imageClickHandler(event) {
@@ -200,24 +213,63 @@ function shatterCompleteHandler() {
     fragments.length = 0;
     vertices.length = 0;
     indices.length = 0;
+	
     
-	var imgDiv = document.getElementById('all_screen');
 	
-	setTimeout(function(){
-		document.getElementById("all_screen").addEventListener('click',all_screen_click);
-		 lastClick.src = targetPrize.src;
-		 if(targetPrize.className.indexOf('big_prizes') > 0)
-		     lastClick.className += ' card3_imgs big_prizes';//特效沒想好
-		 else lastClick.className += ' card3_imgs';
-		 imgDiv.style.display = "none";		 
-		 divPreviewer.removeChild(canvas);
-		 check_finished();
-		 if(in_guide)
-		     guide_forward();
-	 },500);
-	 
+	videoDiv.style.display = "flex";
 	
+	if(targetPrize.classList.contains('haveAnimation')){
+		video = document.createElement('video');
+		video.addEventListener('click',video_click);
+		video.addEventListener('ended',video_ended);
+		video.id = 'drawed_animation_video';
+		video.style.height = "100%";
+		source = document.createElement('source');
+		source.type = "video/webm";
+		source.src = 'images/video/'+getFileName(targetPrize.src)+'.webm';
+		videoDiv.appendChild(video);
+		video.appendChild(source);
+		video.play();
+	}
+	else {
+		setTimeout(function(){
+			 finishAnimation(imgDiv);
+		},250);
+	}
 }
+
+function video_ended(event){
+	videoDiv.style.display = "none";
+	videoDiv.innerHTML = "";
+	finishAnimation(imgDiv);
+}
+
+function video_click(event){
+	event.target.removeEventListener('ended',video_ended);
+	videoDiv.style.display = "none";
+	videoDiv.innerHTML = "";
+	finishAnimation(imgDiv);
+}
+
+function getFileName(val) {
+	filename = val.split('\\').pop().split('/').pop();
+    filename = filename.substring(0, filename.lastIndexOf('.'));
+	return filename;
+}
+
+function finishAnimation(imgDiv){
+	imgDiv.addEventListener('click',all_screen_click);
+	lastClick.src = targetPrize.src;
+	if(targetPrize.className.indexOf('big_prizes') > 0)
+		lastClick.className += ' card3_imgs big_prizes';//特效沒想好
+	else lastClick.className += ' card3_imgs';
+	imgDiv.style.display = "none";
+	divPreviewer.removeChild(canvas);
+	check_finished();
+	if(in_guide)
+		guide_forward();
+}
+
 
 //////////////
 // MATH UTILS
@@ -327,9 +379,10 @@ function create_pool(pool_name){
 			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
 			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
 			FillPrizes(prizes,'images/material/skip.png',1);//掃蕩卷
-			FillPrizes(prizes,'images/character/binbin.png',1,true);//角色
-			FillPrizes(prizes,'images/character/maomao.png',1,true);//角色
-			FillPrizes(prizes,'images/character/tutu.png',1,true);//角色
+			FillPrizes(prizes,'images/character/binbin.png',1,true,true);//角色
+			FillPrizes(prizes,'images/character/maomao.png',1,true,true);//角色
+			FillPrizes(prizes,'images/character/tutu.png',1,true,true);//角色
+			//FillPrizes(prizes,'images/character/binbin.png',25,true,true);//角色
 		break;
 		case "cloudhorizon":
 		    prizes=[];			
@@ -347,6 +400,40 @@ function create_pool(pool_name){
 			FillPrizes(prizes,'images/character/margaret.png',1,true);//角色
 			FillPrizes(prizes,'images/character/kamiina.png',1,true);//角色
 			FillPrizes(prizes,'images/character/linglan.png',1,true);//角色
+		break;
+		case "chasedrea1":
+		    prizes=[];			
+			FillPrizes(prizes,'images/material/gold.png',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.png',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.png',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.png',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.png',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.png',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.png',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.png',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
+			FillPrizes(prizes,'images/material/skip.png',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/naiweiya.png',1,true);//角色
+			FillPrizes(prizes,'images/character/zuoying.png',1,true);//角色
+			FillPrizes(prizes,'images/character/baimingjing_Archer.png',1,true);//角色
+		break;
+		case "chasedrea2":
+		    prizes=[];			
+			FillPrizes(prizes,'images/material/gold.png',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.png',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.png',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.png',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.png',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.png',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.png',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.png',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
+			FillPrizes(prizes,'images/material/skip.png',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/haiwen.png',1,true);//角色
+			FillPrizes(prizes,'images/character/zuoge.png',1,true);//角色
+			FillPrizes(prizes,'images/character/baimingjing_Sword.png',1,true);//角色
 		break;
 		case "ciandaoshanghuei":
 		    prizes=[];
@@ -366,7 +453,7 @@ function create_pool(pool_name){
 			FillPrizes(prizes,'images/character/Marlow_SR.png',1,true);//角色
 		break;
 	    default:
-	    alert('由於沒有圖片素材，目前只開放病病池/畢業池(低畫質版)');
+	    alert('由於沒有圖片素材，目前未開放喔，敬請期待');
 	    return;
 	}
 	tableCreate();//清空並重置table
