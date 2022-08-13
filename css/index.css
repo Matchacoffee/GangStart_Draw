@@ -56,11 +56,11 @@ canvas {
 }
 #side_menu .side_btn{
 	position: absolute;
-	width: 50px;
+	width: 45px;
 	height: 90px;
 	background-color: rgba(0, 0, 0, 0.5);
 	color: #fff;
-	right: -50px;
+	right: -45px;
 	top: 0;
 	bottom: 0;
 	margin: auto;
