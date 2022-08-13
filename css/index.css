@@ -56,11 +56,11 @@ canvas {
 }
 #side_menu .side_btn{
 	position: absolute;
-	width: 60px;
-	height: 100px;
+	width: 50px;
+	height: 90px;
 	background-color: rgba(0, 0, 0, 0.5);
 	color: #fff;
-	right: -60px;
+	right: -50px;
 	top: 0;
 	bottom: 0;
 	margin: auto;
@@ -174,12 +174,9 @@ ul a {
   display: inline-block;
   text-decoration: none;
   color: #666;
-  overflow:hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+  
+ 
 	white-space: nowrap;
-line-height: 
 }
 /* ===================================
    布局樣式
@@ -197,6 +194,8 @@ line-height:
   position: relative;
 }
 .submenu {
+	overflow:hidden;
+	text-overflow:ellipsis;
   height:auto;
   position: relative;
   width: 100%;
@@ -246,7 +245,7 @@ line-height:
    ===================================*/
 @media screen and (max-width:1000px) {
 	:root {
-	  --side_fontsize: 50px;
+	  --side_fontsize: 35px;
 	}
   #container{
 	width : 99%;
