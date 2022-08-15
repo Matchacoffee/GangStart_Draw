@@ -2,7 +2,7 @@
 
 const TWO_PI = Math.PI * 2;
 
-let in_guide = false;
+let in_guide = false,handan_mode = false;
 var image,
     imageWidth = 768,
     imageHeight = 485;
@@ -345,7 +345,9 @@ Fragment.prototype = {
 
 function tableCreate() {
   var container = document.getElementById("container");
-  tbl = document.createElement('table');
+  tbl = document.getElementById("draw_box");
+  tbl.innerHTML = "";
+  //tbl = document.createElement('table');
 		//border-collapse: collapse; border-spacing: 0;
 
   for (let i = 0; i < 5; i++) {
@@ -360,8 +362,8 @@ function tableCreate() {
       td.appendChild(image);
     }
   }
-  container.innerHTML = "";
-  document.getElementById("container").appendChild(tbl);
+  
+  //document.getElementById("container").appendChild(tbl);
 }
 
 function create_pool(pool_name){
@@ -503,6 +505,18 @@ function hint_guide_click(event){
 	else guide_forward();	
 }
 
+function Handan_click(event){
+	handan_mode = !handan_mode;
+	var msg = document.getElementById("msg_show");
+	if(handan_mode)
+	{
+		//var myfontsize = getComputedStyle(document.documentElement).getPropertyValue('--side_fontsize');
+		msg.innerHTML = "邯鄲學步模式_此模式中抽到三位大獎後不會自動翻開剩下的牌";
+		//msg.style.fontSize = myfontsize;
+	}
+	else msg.innerHTML = "";
+}
+
 function item_click(event){
 	document.getElementById("side-menu-switch").checked = false;
 }
@@ -524,7 +538,7 @@ function side_chk_click(event){
 	if(!btn.checked)
 		return;
 	var  btns = document.getElementsByClassName("side_chk");
-	var myfontsize = getComputedStyle(document.documentElement).getPropertyValue('--side_fontsize');	
+	var myfontsize = getComputedStyle(document.documentElement).getPropertyValue('--side_fontsize');
 	var list = document.querySelectorAll("#side_menu li:nth-child("+index+") .submenu-item");
 	list.forEach(item => {
 	  item.style.overflow = "visible";
@@ -545,6 +559,8 @@ function guide_forward(){
 
 
 async function check_finished(){
+	if(handan_mode)
+		return;
 	if(document.querySelectorAll("#container .big_prizes").length != 3)//大獎
 		return;
 	var cards = document.getElementsByClassName('card_imgs');

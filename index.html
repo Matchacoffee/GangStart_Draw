@@ -73,7 +73,7 @@
 		  </label>
 		  <div class="submenu">
 			<a class="submenu-item" id ="hint_guide" href="#">提示我該抽哪裡</a>
-			<a class="submenu-item" href="#"> </a>
+			<a class="submenu-item" id ="Handan" href="#">邯鄲學步模式</a>
 			<a class="submenu-item" href="#"> </a>
 			<a class="submenu-item" href="#"> </a>
 			<a class="submenu-item" href="#"> </a>
@@ -99,6 +99,8 @@
 	
 	
 	<div  id = "container">
+	    <div id="msg_show"  style="padding-top:20px" ></div>
+	    <table id="draw_box"></table>
 	</div>
 	
 	<!-- <div  id = "screen">
@@ -110,7 +112,7 @@
 		
 		<script src="js/delaunay.js"></script>
 		<script src="js/TweenMax.min.js"></script>
-		<script  src="js/script.js?v=002"></script>
+		<script  src="js/script.js?v=003"></script>
 		<script type="text/javascript">
 
 	/*document.querySelectorAll('.card_imgs').forEach(item => {
@@ -118,6 +120,7 @@
 	});*/
 	document.getElementById("all_screen").addEventListener('click',all_screen_click);
 	document.getElementById("hint_guide").addEventListener('click',hint_guide_click);
+	document.getElementById("Handan").addEventListener('click',Handan_click);
 	
 	document.querySelectorAll('.submenu-item').forEach(item => {
 	  item.addEventListener('click',item_click);
