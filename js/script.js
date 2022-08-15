@@ -353,7 +353,7 @@ function tableCreate() {
     for (let j = 0; j < 5; j++) {
       const td = tr.insertCell();
 	  const image = document.createElement('img');
-	  image.src = "images/material/card.png";
+	  image.src = "images/material/card.webp";
 	  image.id = "card"+((i*5)+j);
 	  image.className = "card_imgs";
 	  image.addEventListener('click',cards_click);
@@ -368,89 +368,89 @@ function create_pool(pool_name){
 	switch(pool_name){
 	    case "binbin":
 	        prizes=[];			
-			FillPrizes(prizes,'images/material/gold.png',6);//金幣
-			FillPrizes(prizes,'images/material/Cert_Summit.png',3);//頂尖證明
-			FillPrizes(prizes,'images/material/AwakeStone.png',2);//小覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone1.png',2);//中覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone2.png',2);//大覺醒石
-			FillPrizes(prizes,'images/material/food.png',2);//漢堡
-			FillPrizes(prizes,'images/material/Cert_Archer_copper.png',1);//弓銅
-			FillPrizes(prizes,'images/material/Cert_Healer_copper.png',1);//牧銅
-			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
-			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
-			FillPrizes(prizes,'images/material/skip.png',1);//掃蕩卷
-			FillPrizes(prizes,'images/character/binbin.png',1,true,true);//角色
-			FillPrizes(prizes,'images/character/maomao.png',1,true,true);//角色
-			FillPrizes(prizes,'images/character/tutu.png',1,true,true);//角色
-			//FillPrizes(prizes,'images/character/binbin.png',25,true,true);//角色
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',3);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',2);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',1);//掃蕩卷
+			FillPrizes(prizes,'images/character/binbin.webp',1,true,true);//角色
+			FillPrizes(prizes,'images/character/maomao.webp',1,true,true);//角色
+			FillPrizes(prizes,'images/character/tutu.webp',1,true,true);//角色
+			//FillPrizes(prizes,'images/character/binbin.webp',25,true,true);//角色
 		break;
 		case "cloudhorizon":
 		    prizes=[];			
-			FillPrizes(prizes,'images/material/gold.png',6);//金幣
-			FillPrizes(prizes,'images/material/Cert_Summit.png',2);//頂尖證明
-			FillPrizes(prizes,'images/material/AwakeStone.png',2);//小覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone1.png',2);//中覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone2.png',2);//大覺醒石
-			FillPrizes(prizes,'images/material/food.png',2);//漢堡
-			FillPrizes(prizes,'images/material/Cert_Archer_copper.png',1);//弓銅
-			FillPrizes(prizes,'images/material/Cert_Healer_copper.png',1);//牧銅
-			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
-			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
-			FillPrizes(prizes,'images/material/skip.png',2);//掃蕩卷
-			FillPrizes(prizes,'images/character/margaret.png',1,true);//角色
-			FillPrizes(prizes,'images/character/kamiina.png',1,true);//角色
-			FillPrizes(prizes,'images/character/linglan.png',1,true);//角色
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',2);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',2);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/margaret.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/kamiina.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/linglan.webp',1,true);//角色
 		break;
 		case "chasedrea1":
 		    prizes=[];			
-			FillPrizes(prizes,'images/material/gold.png',6);//金幣
-			FillPrizes(prizes,'images/material/Cert_Summit.png',1);//頂尖證明
-			FillPrizes(prizes,'images/material/AwakeStone.png',2);//小覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone1.png',2);//中覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone2.png',2);//大覺醒石
-			FillPrizes(prizes,'images/material/food.png',3);//漢堡
-			FillPrizes(prizes,'images/material/Cert_Archer_copper.png',1);//弓銅
-			FillPrizes(prizes,'images/material/Cert_Healer_copper.png',1);//牧銅
-			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
-			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
-			FillPrizes(prizes,'images/material/skip.png',2);//掃蕩卷
-			FillPrizes(prizes,'images/character/naiweiya.png',1,true);//角色
-			FillPrizes(prizes,'images/character/zuoying.png',1,true);//角色
-			FillPrizes(prizes,'images/character/baimingjing_Archer.png',1,true);//角色
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/naiweiya.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/zuoying.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/baimingjing_Archer.webp',1,true);//角色
 		break;
 		case "chasedrea2":
 		    prizes=[];			
-			FillPrizes(prizes,'images/material/gold.png',6);//金幣
-			FillPrizes(prizes,'images/material/Cert_Summit.png',1);//頂尖證明
-			FillPrizes(prizes,'images/material/AwakeStone.png',2);//小覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone1.png',2);//中覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone2.png',2);//大覺醒石
-			FillPrizes(prizes,'images/material/food.png',3);//漢堡
-			FillPrizes(prizes,'images/material/Cert_Archer_copper.png',1);//弓銅
-			FillPrizes(prizes,'images/material/Cert_Healer_copper.png',1);//牧銅
-			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
-			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
-			FillPrizes(prizes,'images/material/skip.png',2);//掃蕩卷
-			FillPrizes(prizes,'images/character/haiwen.png',1,true);//角色
-			FillPrizes(prizes,'images/character/zuoge.png',1,true);//角色
-			FillPrizes(prizes,'images/character/baimingjing_Sword.png',1,true);//角色
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/haiwen.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/zuoge.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/baimingjing_Sword.webp',1,true);//角色
 		break;
 		case "ciandaoshanghuei":
 		    prizes=[];
-			FillPrizes(prizes,'images/material/gold.png',6);//金幣
-			FillPrizes(prizes,'images/material/Cert_Summit.png',1);//頂尖證明
-			FillPrizes(prizes,'images/material/AwakeStone.png',2);//小覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone1.png',2);//中覺醒石
-			FillPrizes(prizes,'images/material/AwakeStone2.png',2);//大覺醒石
-			FillPrizes(prizes,'images/material/food.png',3);//漢堡
-			FillPrizes(prizes,'images/material/Cert_Archer_copper.png',1);//弓銅
-			FillPrizes(prizes,'images/material/Cert_Healer_copper.png',1);//牧銅
-			FillPrizes(prizes,'images/material/Cert_Sword_copper.png',1);//劍銅
-			FillPrizes(prizes,'images/material/Cert_Wizard_copper.png',1);//法銅
-			FillPrizes(prizes,'images/material/skip.png',2);//掃蕩卷
-			FillPrizes(prizes,'images/character/bulliedRabbit_SSR.png',1,true);//角色
-			FillPrizes(prizes,'images/character/qiuren_Archer.png',1,true);//角色
-			FillPrizes(prizes,'images/character/Marlow_SR.png',1,true);//角色
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/bulliedRabbit_SSR.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/qiuren_Archer.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/Marlow_SR.webp',1,true);//角色
 		break;
 	    default:
 	    alert('由於沒有圖片素材，目前未開放喔，敬請期待');
@@ -461,7 +461,7 @@ function create_pool(pool_name){
 	RandomPrizes();
 	
 	image = new Image();
-	image.src = 'images/material/card.png';//放上卡背
+	image.src = 'images/material/card.webp';//放上卡背
 	
 }
 
