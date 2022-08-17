@@ -344,7 +344,7 @@ Fragment.prototype = {
 };
 
 function tableCreate() {
-  var container = document.getElementById("container");
+  //var container = document.getElementById("container");
   tbl = document.getElementById("draw_box");
   tbl.innerHTML = "";
   //tbl = document.createElement('table');
@@ -399,9 +399,9 @@ function create_pool(pool_name){
 			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
 			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
 			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
-			FillPrizes(prizes,'images/character/margaret.webp',1,true);//角色
-			FillPrizes(prizes,'images/character/kamiina.webp',1,true);//角色
-			FillPrizes(prizes,'images/character/linglan.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/margaret.webp',1,true,true);//角色
+			FillPrizes(prizes,'images/character/kamiina.webp',1,true,true);//角色
+			FillPrizes(prizes,'images/character/linglan.webp',1,true,true);//角色
 		break;
 		case "chasedrea1":
 		    prizes=[];			

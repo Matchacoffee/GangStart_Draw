@@ -52,7 +52,7 @@ canvas {
 	background: rgba(0, 0, 0, 0.5);
 	position: fixed;
 	transform: translateX(-100%);
-	transition: .3s;
+	transition: 0.3s;
 }
 #side_menu .side_btn{
 	position: absolute;
