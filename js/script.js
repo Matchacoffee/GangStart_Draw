@@ -454,8 +454,91 @@ function create_pool(pool_name){
 			FillPrizes(prizes,'images/character/qiuren_Archer.webp',1,true);//角色
 			FillPrizes(prizes,'images/character/Marlow_SR.webp',1,true);//角色
 		break;
+		case "rescute_No15":
+		    prizes=[];
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/No15_Archer.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/No15_Sword.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/No15_Toy.webp',1,true);//角色
+		break;
+		case "rescute_Lutralutra":
+		    prizes=[];
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/Lutralutra_Archer.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/Lutralutra_Healer.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/Lutralutra_Toy.webp',1,true);//角色
+		break;
+		case "rescute_Obear":
+		    prizes=[];
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/Obear_Sword.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/Obear_Wizard.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/Obear_Toy.webp',1,true);//角色
+		break;
+		case "surprise":
+		prizes=[];
+		FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+		FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
+		FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+		FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+		FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+		FillPrizes(prizes,'images/material/food.webp',3);//漢堡
+		FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+		FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+		FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+		FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+		FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+		
+		var surprise = {0:'binbin',1:'maomao',2:'tutu',3:'margaret',4:'kamiina',5:'linglan',6:'naiweiya',7:'zuoying',
+		               8:'baimingjing_Archer',9:'haiwen',10:'zuoge',11:'baimingjing_Sword',12:'bulliedRabbit_SSR',13:'qiuren_Archer',14:'Marlow_SR',15:'No15_Archer',
+					   16:'No15_Sword',17:'No15_Toy',18:'Lutralutra_Archer',19:'Lutralutra_Healer',20:'Lutralutra_Toy',21:'Obear_Sword',22:'Obear_Wizard',23:'Obear_Toy'};
+		var superprize = new Object();
+		for(var i=0;i<3;i++)
+		{
+			index =Math.floor(Math.random()*Object.keys(surprise).length);//ex: random*5 > 0~4
+			if(surprise[index] in superprize)
+			    i--;
+			else{
+				superprize[surprise[index]] = '';
+				if(index<6)
+					FillPrizes(prizes,'images/character/'+surprise[index]+'.webp',1,true,true);//角色
+				else FillPrizes(prizes,'images/character/'+surprise[index]+'.webp',1,true);//角色
+			}
+		}
+		alert('已領取驚喜，來試試手氣?');
+		break;
 	    default:
-	    alert('由於沒有圖片素材，目前未開放喔，敬請期待');
+	    alert('由於春睏夏乏秋盹冬眠，目前未開放喔，敬請期待');
 	    return;
 	}
 	tableCreate();//清空並重置table
