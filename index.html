@@ -23,20 +23,14 @@
 		</div>
 	</div>
 	<input type="checkbox" name="" id="side-menu-switch">
-	<div class = "hidden">
-		<input type="checkbox" id="side1" class = "side_chk">
-		<input type="checkbox" id="side2" class = "side_chk">
-		<input type="checkbox" id="side3" class = "side_chk">
-		<input type="checkbox" id="side4" class = "side_chk">
-		<input type="checkbox" id="side5" class = "side_chk">
-	</div>
+	<input id="tab999" hidden type="checkbox" />
 	
-	
-	<div id = "side_menu">
+	<div id = "side_menu" >
 	   <ul class="menu">
 		<li class="itembox drop-down">
 		  <!-- <a class="item" href="#">限定池</a> -->
-		  <label for="side1" >
+		  <input id="tab4" type="checkbox" name="menu"/>
+		  <label for="tab4" >
 		      <a class="item" >合作限定</a>
 		  </label>
 		  <div class="submenu">
@@ -51,7 +45,8 @@
 		  </div>
 		</li>
 		<li class="itembox drop-down">
-		  <label for="side2" >
+		  <input id="tab5" type="checkbox" name="menu" />
+		  <label for="tab5" >
 		      <a class="item" >本家限定</a>
 		  </label>
 		  <div class="submenu">
@@ -59,7 +54,8 @@
 		  </div>
 		</li>    
 		<li class="itembox drop-down">
-		  <label for="side3" >
+		  <input id="tab6" type="checkbox" name="menu" />
+		  <label for="tab6">
 		      <a class="item" >常駐池</a>
 		  </label>
 		  <div class="submenu">
@@ -73,25 +69,26 @@
 		  </div>
 		</li>
 		<li class="itembox drop-down">
-		  <label for="side4" >
+		  <input id="tab7" type="checkbox" name="menu" />
+		  <label for="tab7">
 		      <a class="item" >貼心功能</a>
 		  </label>
 		  <div class="submenu">
-			<a class="submenu-item" id ="hint_guide" href="#">提示我該抽哪裡</a>
-			<a class="submenu-item" id ="Handan" href="#">邯鄲學步模式</a>
-			<a class="submenu-item pool surprise" href="#">是驚喜!我加了驚喜!</a>
-			<a class="submenu-item" href="#"> </a>
-			<a class="submenu-item" href="#"> </a>
-			<a class="submenu-item" href="#"> </a>
+		    <a class="submenu-item pool DIY" href="#">自訂池</a>
+			<a class="submenu-item considerate" id ="hint_guide" href="#">提示我該抽哪裡</a>
+			<a class="submenu-item considerate" id ="Handan" href="#">邯鄲學步模式</a>
+			<label for="tab999" class="submenu-item" id = "create_pool" href="#">創造模式</label>
+			<a class="submenu-item" target="_self"  href="html/croppietest.html">上傳圖片</a>
 		  </div>
 		</li>
 		<li class="itembox drop-down">
-		  <label for="side5" >
-		      <a class="item" >感謝</a>
+		  <input id="tab8" type="checkbox" name="menu" />
+		  <label for="tab8" >
+		      <a class="item">感謝</a>
 		  </label>
 		  <div class="submenu">
-			<a class="submenu-item" target="_blank"  href="https://home.gamer.com.tw/homeindex.php?owner=as0981154032">技能動畫:as0981154032</a>
-			<a class="submenu-item" target="_blank"  href="https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fhome.gamer.com.tw%2Fhomeindex.php">無聊點進來的你</a>
+			<a class="submenu-item" target="_blank"  href="https://home.gamer.com.tw/homeindex.php?owner=as0981154032" rel="noreferrer noopenner">技能動畫:as0981154032</a>
+			<a class="submenu-item" target="_blank"  href="https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fhome.gamer.com.tw%2Fhomeindex.php" rel="noreferrer noopenner">無聊點進來的你</a>
 		  </div>
 		</li>
 	  </ul>
@@ -102,12 +99,47 @@
 	</div>
 	
 	
-	
-	<div  id = "container">
-	    <div id="msg_show"  style="padding-top:20px" ></div>
-	    <table id="draw_box"></table>
+	<div id = "body_panel" style = "overflow-y:auto;" >
+		<div  id = "container" class = "container">
+			<div id="msg_show"  style="padding-top:20px" ></div>
+			<table id="draw_box" ></table>
+		</div>
 	</div>
 	
+	<!-- <div id="function_panel"  style="padding-top:30px;border-width:9px; border-style:solid;" ></div> -->
+	<div id = "show_diyImg">
+		<div class="tab_css">
+			<!-- TAB1 打包區塊 start -->
+			<input id="tab1" type="radio" name="tab" checked="checked" />
+			<label for="tab1">角色</label>
+			<div class="tab_content ">
+				<table id="diyImg_character_box" class = "container" ></table>
+			</div>
+			<!-- TAB1 打包區塊 end -->
+
+			<!-- TAB2 打包區塊 start -->
+			<input id="tab2" type="radio" name="tab" />
+			<label for="tab2" >素材</label>
+			<div class="tab_content">
+				<table id="diyImg_material_box" class = "container" ></table>
+			</div>
+			<!-- TAB2 打包區塊 end -->
+
+			<!-- TAB3 打包區塊 start -->
+			<input id="tab3" type="radio" name="tab"/>
+			<label for="tab3">自訂</label>
+			<div class="tab_content">
+				<table id="diyImg_local_box" class = "container" ></table>
+			</div>
+			<!-- TAB3 打包區塊 end -->
+			<label id = "diy_save" class="tab_btn">存起來</label>
+			<label id = "diy_clearall" class="tab_btn">清空</label>
+			<label id = "diy_fillmaterial" class="tab_btn">快速塞素材</label>
+		</div>
+		<!-- <div id="diyImg_container" class = "container">
+			<table id="diyImg_draw_box" ></table>
+		</div> -->
+	</div>
 	<!-- <div  id = "screen">
 	    <span id ="SpanID1">a</span>
 		<span id ="SpanID2">a</span>
@@ -115,28 +147,26 @@
 		<span id ="SpanID4">a</span>
 	</div> -->
 		
-		<script src="js/delaunay.js"></script>
-		<script src="js/TweenMax.min.js"></script>
-		<script  src="js/script.js?v=003"></script>
-		<script type="text/javascript">
-
-	/*document.querySelectorAll('.card_imgs').forEach(item => {
-	  item.addEventListener('click',cards_click);
-	});*/
+	<script src="js/delaunay.js"></script>
+	<script src="js/TweenMax.min.js"></script>
+	<script  src="js/items.js"></script>
+	<script  src="js/script.js?v=003"></script>
+	<script type="text/javascript">
 	document.getElementById("all_screen").addEventListener('click',all_screen_click);
 	document.getElementById("hint_guide").addEventListener('click',hint_guide_click);
 	document.getElementById("Handan").addEventListener('click',Handan_click);
+	document.getElementById("create_pool").addEventListener('click',create_pool_click);
 	
+
+	document.getElementById("diy_save").addEventListener('click',diy_save_click);
+	document.getElementById("diy_clearall").addEventListener('click',diy_clearall_click);
+	document.getElementById("diy_fillmaterial").addEventListener('click',diy_fillmaterial_click);
 	document.querySelectorAll('.submenu-item').forEach(item => {
 	  item.addEventListener('click',item_click);
 	});
 	document.querySelectorAll('.pool').forEach(item => {
 	  item.addEventListener('click',pool_click);
 	});
-	document.querySelectorAll('.side_chk').forEach(item => {
-	  item.addEventListener('click',side_chk_click);
-	});
-	//
 	/*
 	function start(){
 	  //var screen-widths = document.body.clientWidth;

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"  name="viewport" />
+        <title>Gang Start 背鍋抽卡指引</title>
+        <meta name="keywords" content="Gang Start,非洲救星,儀式魔法,轉運失敗">
+        <meta name="description" content="抱團取暖">
+        
+        <link href="../favicon.png" rel="icon">
+        <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+        <script src="../js/jquery-3.6.1.min.js"></script>
+        <script src="../js/croppie.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/croppie.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css?v=0011">
+    </head>
+    <body >
+    
+    <div id ="all_screen">
+        <div class="imgPreview" id = "divPreviewer">
+        </div>
+        <div  id="drawed_animation">
+            <!-- <video height="100%"  autoplay muted id = "drawed_animation_video">
+                <source src="images/binbin.webm" type="video/webm" id = "animation_source"/>
+            </video> -->
+        </div>
+    </div>
+    <input type="checkbox" name="" id="side-menu-switch">
+    
+    <div id = "side_menu" >
+       <ul class="menu">
+        <li class="itembox drop-down">
+          <!-- <a class="item" href="#">限定池</a> -->
+          <input id="tab4" type="checkbox" name="tab"/>
+          <label for="tab4" >
+              <a class="item" >基礎功能</a>
+          </label>
+          <div class="submenu">
+            <a class="submenu-item" href="../index.html">回首頁</a>
+          </div>
+        </li>
+        <li class="itembox drop-down">
+          <input id="tab5" type="checkbox" name="tab" />
+          <label for="tab5" >
+              <a class="item" >上傳自訂圖片</a>
+          </label>
+          <div class="submenu">
+            <a class="submenu-item" id="start_upload" href="#">上傳</a>
+          </div>
+        </li>    
+        <li class="itembox drop-down">
+          <input id="tab6" type="checkbox" name="tab" />
+          <label for="tab6" >
+              <a class="item" >整理自訂圖片</a>
+          </label>
+          <div class="submenu">
+            <a class="submenu-item" id = "manageImgs" href="#">整理</a>
+          </div>
+        </li>
+      </ul>
+    
+    <label for="side-menu-switch" class="side_btn" >
+        ≡
+    </label>
+    </div>
+    
+    <div id = "body_panel" style = "overflow-y:auto;">
+        <div  class = "container" >
+            <label class="inputToBtn"><input id="upload_img" style="display:none;" type="file"  accept="image/*"> 上傳圖片</label>
+            <div id="oldImgInfo"></div>
+            <div id="oldImg" style="display:none;"></div>
+            <label class="inputToBtn" id="crop_img" style = "display:none;">裁剪圖片</label>
+            
+            <div id="newImg"></div>
+            <div id = "show_img"></div>
+            <label class="inputToBtn" id="save_img" style = "display:none;">保留圖片</label>
+            <div id="newImgInfo"></div>
+            <canvas hidden id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3;">
+                <img hidden id = 'nodisplay_img'></img>
+            </canvas>
+            <table id="draw_box"  ></table>
+        </div>
+        
+    </div>
+    
+    <div id = "show_diyImg" style ="height:99.8vh;display:none;overflow-y:auto;border-top-style:solid;border-width:0.2vh; ">
+        <div class="tab_css">
+            <!-- TAB3 打包區塊 start -->
+            <input id="tab3" type="radio" name="tab" checked="checked"/>
+            <label for="tab3">本機端圖片</label>
+            <div class="tab_content" class = "container">
+                <table id="diyImg_local_box" class = "container"></table>
+            </div>
+            <!-- TAB3 打包區塊 end -->
+			<label id = "delete" onclick = "delete_img()" class="tab_btn">刪除</label>
+			<label onclick="clear_all()" class="tab_btn">清空全部</label>
+            <!-- <label id = "" class="tab_btn">快速塞素材</label> -->
+        </div>
+    </div>
+
+
+    </body>
+    
+    <!-- <script src="js/delaunay.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script  src="js/items.js"></script>
+    <script  src="js/script.js?v=003"></script> -->
+    <script type="text/javascript">
+
+        if (Storage !== void(0)){}
+        else {
+            alert('此瀏覽器不支援功能');
+            history.back();
+        }
+        
+        function clear_all(){
+            var yes = confirm('刪掉救不回來喔(包含自訂池)，你確定嗎？');
+            if (!yes) {
+               return;
+            }
+			localStorage.clear();
+			show_all_local();
+        }
+		
+		function delete_img(){
+            var yes = confirm('刪掉救不回來喔，你確定嗎？');
+            if (!yes) {
+               return;
+            }
+			var allImg = document.querySelectorAll("#diyImg_local_box .deleteCheck");
+			allImg.forEach(item => {
+			  if(item.checked){
+			    localStorage.removeItem(item.name);
+			  }
+			});
+			show_all_local();
+        }
+		
+		function show_all_local(){
+		  var localNum = 0,index = 0; var size = 0;
+		  var localName =[]
+		  for(item in localStorage){
+		    if(item.indexOf('diyImg') >= 0)//有圖片才載入
+			    localName.push(item);
+		  }
+          tbl4 = document.getElementById("diyImg_local_box");
+          tbl4.innerHTML = "";
+          localNum = localName.length;
+          times = Math.floor(localNum/5.0);
+          for (let i = 0; i < times+1; i++) {
+            const tr = tbl4.insertRow();
+            for (let j = 0; j < 5; j++) {
+              if(localNum == (i*5)+j)
+			  {
+				  break;
+			  }
+              const td = tr.insertCell();
+              const image = document.createElement('img');
+			  const input = document.createElement('input');
+			  const label = document.createElement('label');
+              image.src = localStorage.getItem(localName[(i*5)+j]);
+              image.className = "card_imgs";
+			  input.type = "checkbox";
+			  input.className = "deleteCheck";
+			  input.style.display="initial";
+			  input.id = "localTable"+index;
+			  label.htmlFor = "localTable"+index;
+			  label.style.background = "transparent";
+			  label.style.opacity = "1";
+			  label.appendChild(image);
+			  input.name = localName[(i*5)+j];
+			  td.appendChild(input);
+			  
+              td.appendChild(label);
+			  
+              index++;
+            }
+          }
+		}
+		
+		
+        //jQuery 以下都jQuery 可惡 真香
+        $("#manageImgs").on("click", function() {
+          $("#body_panel").hide();
+          $("#show_diyImg").show();
+          show_all_local();
+        });
+        
+        $("#start_upload").on("click", function() {
+            $("#body_panel").show();
+            $("#show_diyImg").hide();
+        });
+    
+    </script>
+    <script>
+    
+        (function($) {
+        var width_crop = 380, // 圖片裁切寬度 px 值
+        height_crop = 380, // 圖片裁切高度 px 值
+        type_crop = "square", // 裁切形狀: square 為方形, circle 為圓形
+        width_preview = 500, // 預覽區塊寬度 px 值
+        height_preview = 500, // 預覽區塊高度 px 值
+        compress_ratio = 1, // 圖片壓縮比例 0~1
+        type_img = "webp", // 圖檔格式 jpeg png webp
+        oldImg = new Image(),
+        myCrop, file, oldImgDataUrl;
+
+        // 裁切初始參數設定
+        myCrop = $("#oldImg").croppie({
+        viewport: { // 裁切區塊
+        width: width_crop,
+        height: height_crop,
+        type: type_crop
+        },
+        boundary: { // 預覽區塊
+        width: width_preview,
+        height: height_preview,
+        
+        },
+        //showZoomer:false,
+        });
+
+        function readFile(input) {
+			if (input.files && input.files[0]){
+				file = input.files[0];
+			}
+			else if(!input.files[0]){
+				
+			}else {
+				alert("瀏覽器不支援此功能！");
+				return;
+			}
+
+        if (file.type.indexOf("image") == 0) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            oldImgDataUrl = e.target.result;
+            oldImg.src = oldImgDataUrl; // 載入 oldImg 取得圖片資訊
+            myCrop.croppie("bind", {
+            url: oldImgDataUrl
+            });
+        };
+
+        reader.readAsDataURL(file);
+        } else {
+        alert("您上傳的不是圖檔！");
+        }
+        }
+
+        function displayCropImg(src) {
+        var html = "<img src='" + src + "' />";
+        $("#newImg").html(html);
+        }
+        
+        $("#upload_img").on("change", function() {
+            $("#oldImg").show();
+            readFile(this);
+            $("#crop_img").show();
+        });
+
+        oldImg.onload = function() {
+            var width = this.width,
+            height = this.height,
+            fileSize = Math.round(file.size / 1000),
+            html = "";
+
+            html += "<p>原始圖片尺寸 " + width + "x" + height + "</p>";
+            html += "<p>檔案大小約 " + fileSize + "k</p>";
+            $("#oldImgInfo").html(html);
+        };
+
+        function displayNewImgInfo(src) {
+            var html = "",
+            filesize = src.length * 0.75;
+
+            html += "<p>裁切圖片尺寸 " + width_crop + "x" + height_crop + "</p>";
+            html += "<p>檔案大小約 " + Math.round(filesize / 1000) + "k</p>";
+            $("#newImgInfo").html(html);
+        }
+
+        $("#crop_img").on("click", function() {
+            myCrop.croppie("result", {
+            type: "canvas",
+            format: type_img,
+            quality: compress_ratio
+            }).then(function(src) {
+            //displayCropImg(src);
+            //displayNewImgInfo(src);
+            canvasToimg(src);
+            });
+            $("#save_img").show();
+        });
+        
+        $("#save_img").on("click", function() {
+            var index = localStorage.length;
+            var name = 'diyImg';
+            while(!isNull(localStorage.getItem(name+index)))
+            {
+                index++;
+            }
+            localStorage.setItem(name+index, myCanvas.toDataURL("image/webp"));
+            if(!isNull(localStorage.getItem(name+index)))
+                alert('已儲存');
+        });
+        
+        function canvasToimg(src) {
+            var myCanvas = document.getElementById("myCanvas");
+            var ctx = myCanvas.getContext("2d");
+            var nodisplay_img = document.getElementById("nodisplay_img");
+            var img = document.createElement("img");
+            var div = document.getElementById("show_img");
+            div.innerHTML ='';
+            nodisplay_img.src = src;
+            nodisplay_img.onload = function(){
+                ctx.drawImage(nodisplay_img,10,10);
+                img.src = myCanvas.toDataURL("image/webp");
+                img.id = 'CropImg';
+                //console.log(myCanvas.toDataURL("image/webp"));
+                div.appendChild(img);
+                displayNewImgInfo(myCanvas.toDataURL("image/webp") );
+                //localStorage.setItem('diyImg'+localStorage.length, myCanvas.toDataURL("image/webp"));
+            };
+        }
+        
+        function isNull(str){
+            if(str === null || str === undefined || str.length === 0){
+                return true;
+            }
+            return false;
+        }
+        
+        })(jQuery);
+        </script>
+</html>

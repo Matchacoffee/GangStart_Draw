@@ -68,7 +68,7 @@ window.onload = function() {
 	*/
 	//array.push(value);
 
-	create_pool('binbin');
+	//create_pool('binbin');
 };
 /*
 function imagesLoaded() {
@@ -522,38 +522,43 @@ function create_pool(pool_name){
 			FillPrizes(prizes,'images/character/Losernun_SR_Cat.webp',1,true);//角色
 			FillPrizes(prizes,'images/character/Eva_SR_Cat.webp',1,true);//角色
 		break;
-		case "surprise":
-		prizes=[];
-		FillPrizes(prizes,'images/material/gold.webp',6);//金幣
-		FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
-		FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
-		FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
-		FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
-		FillPrizes(prizes,'images/material/food.webp',3);//漢堡
-		FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
-		FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
-		FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
-		FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
-		FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
-		
-		var surprise = {0:'binbin',1:'maomao',2:'tutu',3:'margaret',4:'kamiina',5:'linglan',6:'naiweiya',7:'zuoying',
-		               8:'baimingjing_Archer',9:'haiwen',10:'zuoge',11:'baimingjing_Sword',12:'bulliedRabbit_SSR',13:'qiuren_Archer',14:'Marlow_SR',15:'No15_Archer',
-					   16:'No15_Sword',17:'No15_Toy',18:'Lutralutra_Archer',19:'Lutralutra_Healer',20:'Lutralutra_Toy',21:'Obear_Sword',22:'Obear_Wizard',23:'Obear_Toy'};
-		var superprize = new Object();
-		for(var i=0;i<3;i++)
-		{
-			index =Math.floor(Math.random()*Object.keys(surprise).length);//ex: random*5 > 0~4
-			if(surprise[index] in superprize)
-			    i--;
-			else{
-				superprize[surprise[index]] = '';
-				if(index<6)
-					FillPrizes(prizes,'images/character/'+surprise[index]+'.webp',1,true,true);//角色
-				else FillPrizes(prizes,'images/character/'+surprise[index]+'.webp',1,true);//角色
+		case "DIY":
+		    if (Storage !== void(0)){  }
+			else {
+				alert('此瀏覽器不支援功能');
+				return;
 			}
-		}
-		alert('已領取驚喜，來試試手氣?');
+		    prizes=[];
+			var string = localStorage.getItem('diypool_1');
+			if(isNull(string))
+			{
+				alert('未設定自訂池');
+				return;
+			}
+			var source = string.split(';').filter((item)=> item.trim() != '');
+			var content = [];
+			if(source.length != 25)
+			{
+				alert('自訂池異常，請重新設定');
+				return;
+			}
+			source.forEach(item =>{
+				content = item.split(':');
+				switch(content[0])
+				{
+					case "character":
+					    FillPrizes(prizes,'images/character/'+content[1]+'.webp',1);//角色
+					break;
+					case "material":
+					    FillPrizes(prizes,'images/material/'+content[1]+'.webp',1);//素材
+					break;
+					case "local":
+					    FillPrizes(prizes,localStorage.getItem(content[1]),1);//素材
+					break;
+				}
+			});
 		break;
+		
 	    default:
 	    alert('由於春睏夏乏秋盹冬眠，目前未開放喔，敬請期待');
 	    return;
@@ -619,35 +624,184 @@ function Handan_click(event){
 
 function item_click(event){
 	document.getElementById("side-menu-switch").checked = false;
+	var dropdown = document.querySelectorAll("#side_menu input");
+	dropdown.forEach(item =>{
+		item.checked = false;
+	});
+	var diymode = document.getElementById("tab999");
+	if(diymode.checked && event.srcElement.id != "create_pool")
+	    diymode.checked = false;
 }
 
-function side_chk_click(event){
-	var btn = event.srcElement;
-	var index = btn.id.replace("side","");
-	var this_checked = btn.checked;
-	var all = document.querySelectorAll("#side_menu .submenu-item");
-	all.forEach(item => {
-	  item.style.overflow = "hidden";
-	  item.style.height = "0px";
-	});
-	all = document.querySelectorAll(".hidden .side_chk");
-	all.forEach(item => {
-	  item.checked = false;
-	});
-	btn.checked = this_checked;
-	if(!btn.checked)
+
+function diy_fill(event){
+	lastClick = event.srcElement;
+	var nullImg = document.querySelectorAll("#draw_box .nullImg");
+	if(nullImg.length == 0)
 		return;
-	var  btns = document.getElementsByClassName("side_chk");
-	var myfontsize = getComputedStyle(document.documentElement).getPropertyValue('--side_fontsize');
-	var list = document.querySelectorAll("#side_menu li:nth-child("+index+") .submenu-item");
-	list.forEach(item => {
-	  item.style.overflow = "visible";
-	  item.style.height= myfontsize;
-	});
-	
-	//console.log(list[index]);
+	nullImg[0].src = lastClick.src;
+	nullImg[0].dataset.name = lastClick.dataset.name;
+	nullImg[0].classList.remove('nullImg');
+	nullImg[0].classList.add('havingImg');
 }
 
+function diy_clear(event){
+	lastClick = event.srcElement;
+	lastClick.dataset.name = "";
+	lastClick.src = "images/material/Null.webp";
+	lastClick.classList.add('nullImg');
+}
+
+function create_pool_click(event){
+  var key = document.getElementById("tab999");
+  if (Storage !== void(0)){  }
+  else {
+    alert('此瀏覽器不支援功能');
+	key.checked = true;//事件綁在先觸發 之後才是外層<label> 所以true → false
+	return;
+  }
+  key.checked = false;
+  tbl = document.getElementById("draw_box");
+  tbl.innerHTML = "";
+  for (let i = 0; i < 5; i++) {
+    const tr = tbl.insertRow();
+    for (let j = 0; j < 5; j++) {
+      const td = tr.insertCell();
+	  const image = document.createElement('img');
+	  image.src = "images/material/Null.webp";
+	  image.id = "null_card"+((i*5)+j);
+	  image.className = "card_imgs nullImg";
+	  image.addEventListener('click',diy_clear);
+      td.appendChild(image);
+    }
+  }
+  tbl2 = document.getElementById("diyImg_character_box");
+  tbl2.innerHTML = "";
+  var roleNum = Object.keys(all_characters).length;
+  var times = Math.floor(roleNum/5.0);
+  for (let i = 0; i < times+1; i++) {
+    const tr = tbl2.insertRow();
+    for (let j = 0; j < 5; j++) {
+	  if(roleNum == (i*5)+j)
+	  {
+		  //console.log(roleNum);
+		  break;
+	  }
+      const td = tr.insertCell();
+	  const image = document.createElement('img');
+	  image.src = "images/character/"+all_characters[(i*5)+j]+".webp";
+	  image.className = "card_imgs";
+	  image.dataset.name = "character:"+all_characters[(i*5)+j];
+	  image.addEventListener('click',diy_fill);
+      td.appendChild(image);
+    }
+  }
+  
+  tbl3 = document.getElementById("diyImg_material_box");
+  tbl3.innerHTML = "";
+  var itemNum = Object.keys(all_material).length;
+  times = Math.floor(itemNum/5.0);
+  for (let i = 0; i < times+1; i++) {
+    const tr = tbl3.insertRow();
+    for (let j = 0; j < 5; j++) {
+	  if(itemNum == (i*5)+j)
+	  {
+		  //console.log(itemNum);
+		  break;
+	  }
+	  
+      const td = tr.insertCell();
+	  const image = document.createElement('img');
+	  image.src = "images/material/"+all_material[(i*5)+j]+".webp";
+	  image.className = "card_imgs";
+	  image.dataset.name = "material:"+all_material[(i*5)+j];
+	  image.addEventListener('click',diy_fill);
+      td.appendChild(image);
+    }
+  }
+  //自訂部分
+  var localNum = 0,index = 0; var size = 0;
+  var localName =[]
+  for(item in localStorage){
+	if(item.indexOf('diyImg') >= 0)
+	    localName.push(item);
+  }
+  
+  tbl4 = document.getElementById("diyImg_local_box");
+  tbl4.innerHTML = "";
+  localNum = localName.length;
+  times = Math.floor(localNum/5.0);
+  for (let i = 0; i < times+1; i++) {
+    const tr = tbl4.insertRow();
+    for (let j = 0; j < 5; j++) {
+	  if(localNum == (i*5)+j)
+	  {
+		  break;
+	  }
+      const td = tr.insertCell();
+	  const image = document.createElement('img');
+	  image.src =  localStorage.getItem(localName[(i*5)+j]);
+	  image.className = "card_imgs";
+	  image.dataset.name = "local:"+localName[(i*5)+j];
+	  image.addEventListener('click',diy_fill);
+      td.appendChild(image);
+    }
+  }
+}
+function diy_save_click(event){
+	var imgs = document.querySelectorAll("#draw_box .havingImg");
+	
+	if(imgs.length != 25)
+	{
+	    alert('請確定25格都有圖片');
+		return;
+	}
+	var temp = '';
+	
+	imgs.forEach(item =>{
+		temp += item.dataset.name+';';
+	});
+	localStorage.setItem('diypool_1',temp);
+	if(!isNull(localStorage.getItem('diypool_1')))
+        alert('成功儲存，快去自訂池看看吧');
+}
+
+
+function diy_clearall_click(event){
+	lastClick = event.srcElement;
+	var nullImg = document.querySelectorAll("#draw_box .havingImg");
+	if(nullImg.length == 0)
+		return;
+	nullImg.forEach(item => {
+	  item.dataset.name = "";
+	  item.src = "images/material/Null.webp";
+	  item.classList.add('nullImg');
+	  item.classList.remove('havingImg');
+	});
+}
+
+function diy_fillmaterial_click(event){
+	lastClick = event.srcElement;
+	var nullImg = document.querySelectorAll("#draw_box .nullImg");
+	if(nullImg.length < 22)
+	{
+		alert('快速塞素材需要22個空位');
+		return;
+	}
+	var material = ['gold','gold','gold','gold','gold','gold',
+	  'Cert_Summit','AwakeStone','AwakeStone','AwakeStone1','AwakeStone1',
+	  'AwakeStone2','AwakeStone2','food','food','food','Cert_Archer_copper',
+	  'Cert_Healer_copper','Cert_Sword_copper','Cert_Wizard_copper',
+	  'skip','skip'
+	];
+	for(var i=0;i<22;i++)
+	{
+		nullImg[i].dataset.name = 'material:'+material[i];
+		nullImg[i].src = 'images/material/'+material[i]+'.webp';
+		nullImg[i].classList.add('havingImg');
+		nullImg[i].classList.remove('nullImg');
+	}
+}
 
 function guide_forward(){
 	if(document.getElementsByClassName('guide_clickme').length != 0)
@@ -679,4 +833,9 @@ function delay(n){
     });
 }
 
-
+function isNull(str){
+	if(str === null || str === undefined || str.length === 0){
+		return true;
+	}
+	return false;
+}
