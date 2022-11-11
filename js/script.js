@@ -522,6 +522,40 @@ function create_pool(pool_name){
 			FillPrizes(prizes,'images/character/Losernun_SR_Cat.webp',1,true);//角色
 			FillPrizes(prizes,'images/character/Eva_SR_Cat.webp',1,true);//角色
 		break;
+		case "monster1":
+		    prizes=[];
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/DeathGirl.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/DeathCat.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/MaidDragon.webp',1,true);//角色
+		break;
+		case "monster2":
+		    prizes=[];
+			FillPrizes(prizes,'images/material/gold.webp',6);//金幣
+			FillPrizes(prizes,'images/material/Cert_Summit.webp',1);//頂尖證明
+			FillPrizes(prizes,'images/material/AwakeStone.webp',2);//小覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone1.webp',2);//中覺醒石
+			FillPrizes(prizes,'images/material/AwakeStone2.webp',2);//大覺醒石
+			FillPrizes(prizes,'images/material/food.webp',3);//漢堡
+			FillPrizes(prizes,'images/material/Cert_Archer_copper.webp',1);//弓銅
+			FillPrizes(prizes,'images/material/Cert_Healer_copper.webp',1);//牧銅
+			FillPrizes(prizes,'images/material/Cert_Sword_copper.webp',1);//劍銅
+			FillPrizes(prizes,'images/material/Cert_Wizard_copper.webp',1);//法銅
+			FillPrizes(prizes,'images/material/skip.webp',2);//掃蕩卷
+			FillPrizes(prizes,'images/character/VampireLoli.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/JudgeDragon.webp',1,true);//角色
+			FillPrizes(prizes,'images/character/WerewolfLoli.webp',1,true);//角色
+		break;
 		case "DIY":
 		    if (Storage !== void(0)){  }
 			else {
